@@ -15,6 +15,7 @@ test('WhatsApp receives the selected variant, gallery photo and literal customer
   const message = url.searchParams.get('text')!;
   for (const text of ['Хочу заказать', 'Товар & уход', 'SKU-2', 'Красный', '125 сомони', `${origin}/images/red-back.webp`, '?product=product-1&variant=red', note]) assert.ok(message.includes(text), text);
   assert.ok(!message.includes('/images/pink.webp'));
+  assert.ok(!message.includes('Количество: 1'), 'a fixed quantity must not contradict the customer asking for two');
   assert.equal([...url.searchParams.keys()].length, 1);
 });
 

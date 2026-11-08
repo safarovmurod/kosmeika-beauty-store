@@ -9,5 +9,7 @@
 .menu-toggle.icon-button{display:none}
 @media(max-width:600px){.menu-toggle.icon-button{display:grid}}
 .circle-button:disabled{opacity:.4;cursor:not-allowed}
+.detail{margin:auto}
+@media(max-width:600px){.detail{margin:0}}
 .card-description{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px;margin:9px 0;color:#877b78;font-size:12px;line-height:19px}
 .card-contact{display:grid;gap:6px;margin-top:13px}.card-whatsapp{min-height:44px;padding:9px 12px;gap:8px;background:#593943;color:#fffaf7;font-size:12px}.card-compose{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:transparent;color:#805663;font-size:12px}.whatsapp-composer{margin-top:25px}.whatsapp-composer label{display:block;margin-bottom:9px;font-size:13px;font-weight:700}.whatsapp-composer label span{margin-left:5px;font-size:11px;font-weight:400;color:#877b78}.whatsapp-composer textarea{width:100%;min-height:88px;max-height:240px;resize:vertical;padding:12px;border:1px solid #ddcfca;background:#fff;color:#302528;font-size:13px;line-height:1.6}.whatsapp-composer .order{width:100%;margin-top:12px}.photo-share{width:100%;min-height:48px;border:1px solid #b9939b;background:transparent;color:#69424e;gap:9px}.photo-share:disabled{opacity:.5;cursor:wait;transform:none}.photo-download{display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;margin-top:5px;color:#805663;font-size:12px;text-decoration:underline}.whatsapp-composer .small-note{line-height:1.6}

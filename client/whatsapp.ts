@@ -19,7 +19,6 @@ export function orderMessage(product: Product, variant: Variant, note = '', phot
     `Товар: ${product.name}`,
     `Артикул: ${variant.sku || product.id}`,
     `Вариант: ${variant.name}`,
-    'Количество: 1',
     `Цена: ${price > 0 ? money(price) : 'уточнить'}`,
     ...(photo ? [`Фото: ${new URL(photo, origin).href}`] : []),
     `Товар: ${productLink(product, variant, origin)}`,
