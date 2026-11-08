@@ -67,3 +67,16 @@ model Audit {
   action    String
   createdAt DateTime @default(now())
 }
+
+model Image {
+  id        String   @id
+  content   Bytes
+  thumbnail Bytes
+  createdAt DateTime @default(now())
+}
+
+model LoginWindow {
+  id        String   @id
+  count     Int
+  expiresAt DateTime
+}

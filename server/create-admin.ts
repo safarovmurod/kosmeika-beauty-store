@@ -2,8 +2,9 @@ import 'dotenv/config';
 import { stdin, stdout } from 'node:process';
 import argon2 from 'argon2';
 import { db } from './db.js';
+import { OWNER_EMAIL } from './owner.js';
 
-const email = 'safarovmancho@gmail.com';
+const email = OWNER_EMAIL;
 if (!stdin.isTTY) throw new Error('Запустите команду в интерактивном терминале.');
 const exists = await db.admin.findUnique({ where: { email } });
 const reset = process.argv.includes('--reset');

@@ -1,1 +1,1 @@
-{"compilerOptions":{"target":"ES2022","module":"NodeNext","moduleResolution":"NodeNext","strict":true,"skipLibCheck":true,"outDir":"dist-server","rootDir":".","types":["node"]},"include":["server","shared","prisma.config.ts"]}
+{"compilerOptions":{"target":"ES2022","module":"NodeNext","moduleResolution":"NodeNext","strict":true,"skipLibCheck":true,"outDir":"dist-server","rootDir":".","types":["node"]},"include":["server","shared","api","prisma.config.ts"]}

@@ -1,0 +1,7 @@
+CREATE TABLE "Image" (
+  "id" TEXT NOT NULL,
+  "content" BYTEA NOT NULL,
+  "thumbnail" BYTEA NOT NULL,
+  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT "Image_pkey" PRIMARY KEY ("id")
+);

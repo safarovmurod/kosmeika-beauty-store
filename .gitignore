@@ -7,3 +7,4 @@ dist-server/
 uploads/
 *.tsbuildinfo
 *.log
+.test-postgres/
