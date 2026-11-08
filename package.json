@@ -17,7 +17,7 @@
     "admin:create": "tsx server/create-admin.ts",
     "db:seed": "tsx server/seed.ts",
     "events:cleanup": "tsx server/cleanup-events.ts",
-    "test": "prisma generate && tsc -p tsconfig.server.json && tsx --test tests/integration.test.ts"
+    "test": "prisma generate && tsc -p tsconfig.server.json && tsx --test tests/integration.test.ts tests/whatsapp.test.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^11.1.5",
