@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  sessions     Session[]
+}
+
+model Session {
+  id        String   @id
+  adminId   String
+  expiresAt DateTime
+  admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  position Int       @default(0)
+  products Product[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String   @default("")
+  usage       String   @default("")
+  ingredients String   @default("")
+  volume      String   @default("")
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  price       Int
+  salePrice   Int?
+  available   Boolean  @default(true)
+  visible     Boolean  @default(false)
+  isNew       Boolean  @default(false)
+  recommended Boolean  @default(false)
+  position    Int      @default(0)
+  variants    Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Event {
+  id        String   @id
+  type      String
+  productId String?
+  variantId String?
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+}
+
+model Setting {
+  key   String @id
+  value String
+}
+
+model Audit {
+  id        String   @id @default(cuid())
+  action    String
+  createdAt DateTime @default(now())
+}
