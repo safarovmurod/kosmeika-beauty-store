@@ -8,3 +8,5 @@ uploads/
 *.tsbuildinfo
 *.log
 .test-postgres/
+
+.vercel/
