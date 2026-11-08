@@ -43,6 +43,9 @@ test('real PostgreSQL: owner login, protected writes, durable uploads and analyt
     await app.ready();
     const origin = { origin: process.env.PUBLIC_ORIGIN };
     try {
+      await t.test('serverless boot works when the platform disables require(ESM)', async () => {
+        await promisify(execFile)(process.execPath, ['--no-experimental-require-module', '--input-type=module', '--eval', "const {buildApp}=await import('./dist-server/server/app.js');const app=await buildApp({serverless:true,logger:false});await app.close();"], { env: process.env });
+      });
       await t.test('anonymous API and cross-origin mutations are rejected', async () => {
         for (const url of ['/api/admin/products', '/api/admin/categories', '/api/admin/stats', '/api/admin/session']) {
           const response = await app.inject({ url });

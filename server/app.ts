@@ -4,7 +4,6 @@ import cookie from '@fastify/cookie';
 import helmet from '@fastify/helmet';
 import multipart from '@fastify/multipart';
 import rateLimit from '@fastify/rate-limit';
-import fastifyStatic from '@fastify/static';
 import { randomBytes, createHash, createHmac, randomUUID } from 'node:crypto';
 import { isIP } from 'node:net';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -22,6 +21,9 @@ export async function buildApp(options: { serverless?: boolean; logger?: boolean
   const origin = process.env.PUBLIC_ORIGIN || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined);
   if (!origin || (production && !origin.startsWith('https://'))) throw new Error('PUBLIC_ORIGIN must be set (HTTPS in production)');
   const uploads = path.resolve(process.env.UPLOAD_DIR || './uploads');
+  // Vercel serves the built assets itself and reads uploads from PostgreSQL.
+  // Avoid loading the local-file plugin in its restricted CommonJS runtime.
+  const fastifyStatic = options.serverless ? null : (await import('@fastify/static')).default;
   if (!options.serverless) await mkdir(uploads, { recursive: true });
   await app.register(cookie);
   await app.register(helmet, { contentSecurityPolicy: { directives: { defaultSrc: ["'self'"], imgSrc: ["'self'", 'data:'], styleSrc: ["'self'", "'unsafe-inline'"], scriptSrc: ["'self'"], connectSrc: ["'self'"], objectSrc: ["'none'"], baseUri: ["'self'"], frameAncestors: ["'none'"] } } });
@@ -31,7 +33,7 @@ export async function buildApp(options: { serverless?: boolean; logger?: boolean
   }
   await app.register(rateLimit, { global: false, keyGenerator: clientAddress });
   await app.register(multipart, { limits: { fileSize: (options.serverless ? 4 : 8) * 1024 * 1024, files: 1 } });
-  if (!options.serverless) {
+  if (fastifyStatic) {
     await app.register(fastifyStatic, { root: uploads, prefix: '/uploads/', decorateReply: false, setHeaders: (response) => { response.header('X-Content-Type-Options', 'nosniff'); response.header('Content-Disposition', 'inline'); } });
   }
   if (options.serverless) {
@@ -175,7 +177,7 @@ export async function buildApp(options: { serverless?: boolean; logger?: boolean
       }
       return reply.type('text/html').send(html);
     });
-    if (!options.serverless) await app.register(fastifyStatic, { root: path.resolve('dist'), prefix: '/', decorateReply: false });
+    if (fastifyStatic) await app.register(fastifyStatic, { root: path.resolve('dist'), prefix: '/', decorateReply: false });
     app.setNotFoundHandler(async (request, reply) => {
       if (request.url.startsWith('/api/') || request.url.startsWith('/uploads/')) return reply.code(404).send({ error: 'Не найдено' });
       if (request.url.startsWith('/admin')) reply.header('X-Robots-Tag', 'noindex, nofollow');
