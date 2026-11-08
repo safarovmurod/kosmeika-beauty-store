@@ -8,19 +8,37 @@
       "maxDuration": 60
     }
   },
-  "headers": [
-    { "source": "/admin/:path*", "headers": [
-      { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-      { "key": "Cache-Control", "value": "no-store" }
-    ] }
-  ],
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/server" },
-    { "source": "/uploads/:path*", "destination": "/api/server" },
-    { "source": "/", "destination": "/api/server" },
-    { "source": "/robots.txt", "destination": "/api/server" },
-    { "source": "/sitemap.xml", "destination": "/api/server" },
-    { "source": "/admin", "destination": "/index.html" },
-    { "source": "/admin/:path*", "destination": "/index.html" }
+  "routes": [
+    {
+      "src": "^/api/(.*)$",
+      "dest": "/api/server"
+    },
+    {
+      "src": "^/uploads/(.*)$",
+      "dest": "/api/server"
+    },
+    {
+      "src": "^/$",
+      "dest": "/api/server"
+    },
+    {
+      "src": "^/robots\\.txt$",
+      "dest": "/api/server"
+    },
+    {
+      "src": "^/sitemap\\.xml$",
+      "dest": "/api/server"
+    },
+    {
+      "src": "^/admin(?:/.*)?$",
+      "dest": "/index.html",
+      "headers": {
+        "X-Robots-Tag": "noindex, nofollow",
+        "Cache-Control": "no-store"
+      }
+    },
+    {
+      "handle": "filesystem"
+    }
   ]
 }

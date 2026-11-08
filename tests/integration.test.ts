@@ -95,6 +95,13 @@ test('real PostgreSQL: owner login, protected writes, durable uploads and analyt
       const created = await app.inject({ method: 'POST', url: '/api/admin/products', headers: auth, payload: draft });
       assert.equal(created.statusCode, 200);
       const productId = created.json().id as string;
+      await t.test('direct product links render server-side social metadata', async () => {
+        const page = await app.inject({ url: `/?product=${productId}&variant=nude` });
+        assert.equal(page.statusCode, 200);
+        assert.match(page.body, /<title>Test product<\/title>/);
+        assert.ok(page.body.includes('og:image'));
+        assert.ok(page.body.includes(photoUrl));
+      });
       await t.test('catalog changes and files survive a new function instance', async () => {
         await app.close(); app = await buildApp({ serverless: true, logger: false }); await app.ready();
         assert.equal((await app.inject({ url: '/api/admin/session', headers: { cookie } })).statusCode, 200);
