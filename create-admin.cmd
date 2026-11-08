@@ -1,6 +1,8 @@
 @echo off
 setlocal
+chcp 65001 >nul
+title Create store administrator
 cd /d "%~dp0"
-call npm run admin:create
+node --import tsx server/create-admin.ts
 echo.
 pause
