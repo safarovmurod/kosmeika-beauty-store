@@ -95,7 +95,7 @@ npm run events:cleanup
 
 ### Vercel
 
-Vercel собирает Vite frontend и функцию `api/server.ts`, которая обслуживает Fastify API, фотографии и серверные метаданные товаров с одного origin. Необходимо подключить постоянную PostgreSQL (например Neon Free) и добавить `DATABASE_URL` в Environment Variables проекта для **Production**. Укажите `PUBLIC_ORIGIN=https://kosmeika-beauty-store.vercel.app`; логин администратора выполняйте на этом основном домене. Для preview используйте отдельную тестовую базу и соответствующий origin — production-базу к preview не подключать.
+Vercel собирает Vite frontend и функцию `api/server.ts`, которая обслуживает Fastify API, фотографии и серверные метаданные товаров с одного origin. Необходимо подключить постоянную PostgreSQL (например Neon Free) и добавить `DATABASE_URL` (pooled) и `DATABASE_URL_UNPOOLED` (direct) в Environment Variables проекта для **Production**. Prisma Migrate использует direct URL; приложение использует pooled URL. Для обычного локального PostgreSQL достаточно одного `DATABASE_URL`. Укажите `PUBLIC_ORIGIN=https://kosmeika-beauty-store.vercel.app`; логин администратора выполняйте на этом основном домене. Для preview используйте отдельную тестовую базу и соответствующий origin — production-базу к preview не подключать.
 
 Vercel использует `npm run build:vercel`: сначала применяет миграции, затем выполняет строгую проверку типов и сборку. При отсутствующей или неработающей базе deployment должен завершиться ошибкой. Node.js закреплён на 24.x. Секреты не должны иметь префикс `VITE_`.
 

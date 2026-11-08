@@ -28,6 +28,7 @@ test('real PostgreSQL: owner login, protected writes, durable uploads and analyt
   try {
     await database.createDatabase('beauty_test');
     process.env.DATABASE_URL = `postgresql://postgres:${databasePassword}@127.0.0.1:${port}/beauty_test`;
+    process.env.DATABASE_URL_UNPOOLED = process.env.DATABASE_URL;
     process.env.PUBLIC_ORIGIN = 'https://store.example';
     process.env.NODE_ENV = 'production';
     await promisify(execFile)(process.execPath, ['node_modules/prisma/build/index.js', 'migrate', 'deploy'], { env: process.env });
