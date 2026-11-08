@@ -125,7 +125,7 @@ test('real PostgreSQL: owner login, protected writes, durable uploads and analyt
         assert.ok(Number(limited.headers['retry-after']) > 0);
       });
       await t.test('Vercel entrypoint forwards raw HTTP requests to Fastify', async () => {
-        const handler = (await import('../api/server.js')).default;
+        const handler = (await import('../api/server.mjs')).default;
         const server = createServer(handler);
         await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
         const address = server.address();

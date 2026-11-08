@@ -3,11 +3,17 @@
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist",
   "functions": {
-    "api/server.ts": {
-      "includeFiles": "dist/index.html",
+    "api/server.mjs": {
+      "includeFiles": "{dist/index.html,dist-server/**}",
       "maxDuration": 60
     }
   },
+  "headers": [
+    { "source": "/admin/:path*", "headers": [
+      { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+      { "key": "Cache-Control", "value": "no-store" }
+    ] }
+  ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/server" },
     { "source": "/uploads/:path*", "destination": "/api/server" },
