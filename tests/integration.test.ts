@@ -87,6 +87,9 @@ test('real PostgreSQL: owner login, protected writes, durable uploads and analyt
         assert.equal(photo.statusCode, 200); assert.match(String(photo.headers['content-type']), /image\/webp/);
         assert.equal((await sharp(photo.rawPayload).metadata()).format, 'webp');
         assert.equal((await app.inject({ url: photoUrl.replace('.webp', '-thumb.webp') })).statusCode, 200);
+        const localApp = await buildApp({ logger: false });
+        try { assert.equal((await localApp.inject({ url: photoUrl })).statusCode, 200); }
+        finally { await localApp.close(); }
         assert.equal((await app.inject({ url: '/uploads/invalid.webp' })).statusCode, 404);
         assert.equal(await db.image.count(), 1);
         assert.equal((await upload(Buffer.alloc(4 * 1024 * 1024 + 1))).statusCode, 413);
@@ -95,12 +98,30 @@ test('real PostgreSQL: owner login, protected writes, durable uploads and analyt
       const created = await app.inject({ method: 'POST', url: '/api/admin/products', headers: auth, payload: draft });
       assert.equal(created.statusCode, 200);
       const productId = created.json().id as string;
+      await t.test('the owner can save and restore empty price and stock values', async () => {
+        const empty = { ...draft, price: null, available: null, variants: draft.variants.map((v) => ({ ...v, price: null, available: null })) };
+        const saved = await app.inject({ method: 'PUT', url: `/api/admin/products/${productId}`, headers: auth, payload: empty });
+        assert.equal(saved.statusCode, 200);
+        const stored = (await app.inject({ url: '/api/catalog' })).json().products[0];
+        assert.equal(stored.price, null); assert.equal(stored.available, null);
+        assert.equal(stored.variants[0].available, null); assert.equal(stored.variants[0].price, null);
+        assert.equal((await app.inject({ method: 'PUT', url: `/api/admin/products/${productId}`, headers: auth, payload: { ...empty, salePrice: 100 } })).statusCode, 400);
+        assert.equal((await app.inject({ method: 'PUT', url: `/api/admin/products/${productId}`, headers: auth, payload: draft })).statusCode, 200);
+      });
       await t.test('direct product links render server-side social metadata', async () => {
         const page = await app.inject({ url: `/?product=${productId}&variant=nude` });
         assert.equal(page.statusCode, 200);
         assert.match(page.body, /<title>Test product<\/title>/);
         assert.ok(page.body.includes('og:image'));
         assert.ok(page.body.includes(photoUrl));
+        const thumb = photoUrl.replace('.webp', '-thumb.webp');
+        const gallery = { ...draft, variants: draft.variants.map((v) => ({ ...v, images: [photoUrl, thumb] })) };
+        assert.equal((await app.inject({ method: 'PUT', url: `/api/admin/products/${productId}`, headers: auth, payload: gallery })).statusCode, 200);
+        const selected = await app.inject({ url: `/?product=${productId}&variant=nude&photo=1` });
+        assert.ok(selected.body.includes(`og:image" content="https://store.example${thumb}`));
+        const invalid = await app.inject({ url: `/?product=${productId}&photo=https%3A%2F%2Fattacker.example` });
+        assert.ok(!invalid.body.includes('attacker.example'));
+        assert.equal((await app.inject({ method: 'PUT', url: `/api/admin/products/${productId}`, headers: auth, payload: draft })).statusCode, 200);
       });
       await t.test('catalog changes and files survive a new function instance', async () => {
         await app.close(); app = await buildApp({ serverless: true, logger: false }); await app.ready();

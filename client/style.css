@@ -13,3 +13,27 @@
 @media(max-width:600px){.detail{margin:0}}
 .card-description{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px;margin:9px 0;color:#877b78;font-size:12px;line-height:19px}
 .card-contact{display:grid;gap:6px;margin-top:13px}.card-whatsapp{min-height:44px;padding:9px 12px;gap:8px;background:#593943;color:#fffaf7;font-size:12px}.card-compose{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:transparent;color:#805663;font-size:12px}.whatsapp-composer{margin-top:25px}.whatsapp-composer label{display:block;margin-bottom:9px;font-size:13px;font-weight:700}.whatsapp-composer label span{margin-left:5px;font-size:11px;font-weight:400;color:#877b78}.whatsapp-composer textarea{width:100%;min-height:88px;max-height:240px;resize:vertical;padding:12px;border:1px solid #ddcfca;background:#fff;color:#302528;font-size:13px;line-height:1.6}.whatsapp-composer .order{width:100%;margin-top:12px}.photo-share{width:100%;min-height:48px;border:1px solid #b9939b;background:transparent;color:#69424e;gap:9px}.photo-share:disabled{opacity:.5;cursor:wait;transform:none}.photo-download{display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;margin-top:5px;color:#805663;font-size:12px;text-decoration:underline}.whatsapp-composer .small-note{line-height:1.6}
+/* Product photos share one frame; text slots keep every order button aligned. */
+.product-card{display:flex;flex-direction:column;height:100%}
+.card-gallery{position:relative;flex:none}
+.product-image{display:block;aspect-ratio:5/6}
+.product-image img{display:block}
+.product-card .card-meta{height:28px;flex:none;align-items:center;margin:12px 0 6px}
+.product-name{height:72px;flex:none;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;line-height:24px}
+.product-card .card-description{height:40px;min-height:40px;margin:8px 0 0;line-height:20px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.card-variant{height:24px;flex:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:11px;line-height:24px;color:#765c62}
+.product-card .card-bottom{height:34px;flex:none;margin-top:8px}
+.product-card .card-contact{margin-top:auto;padding-top:10px}
+.card-whatsapp,.whatsapp-composer .order{background:#197044;color:#fff}
+.card-whatsapp:hover,.whatsapp-composer .order:hover{background:#115c36}
+.stock{color:#197044;font-weight:700}
+.gallery-controls{position:absolute;bottom:12px;left:12px;display:flex;align-items:center;background:#fff;border-radius:24px;z-index:1;color:#493337}
+.gallery-controls span{min-width:32px;text-align:center;font-size:11px}
+.gallery-controls .icon-button{min-width:36px;min-height:40px}
+.detail-photo .gallery-controls{left:50%;transform:translateX(-50%)}
+.swatches{flex-wrap:wrap;gap:8px}
+.variant-choice{display:flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid #d9c9cc;background:#fff;color:#493337;font-size:12px;min-height:44px}
+.variant-choice.selected{border:2px solid #784b58;padding:8px 11px}
+.variant-choice span{width:12px;height:12px;flex:none;border:1px solid #0002;border-radius:50%}
+.product-sku{font-size:11px;color:#80666a;overflow-wrap:anywhere}
+@media(max-width:600px){.product-name{height:66px;line-height:22px}.product-card .card-meta{font-size:9px}.gallery-controls{left:6px;bottom:9px}.gallery-controls .icon-button{min-width:32px;min-height:36px}.gallery-controls span{min-width:26px}.card-whatsapp{padding:0 8px;gap:7px}.card-compose{padding:10px 0}}

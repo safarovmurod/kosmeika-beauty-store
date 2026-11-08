@@ -9,7 +9,7 @@
     "dev:server": "tsx watch server/index.ts",
     "dev:client": "vite --host 127.0.0.1",
     "build": "prisma generate && tsc -b && vite build && tsc -p tsconfig.server.json",
-    "build:vercel": "prisma migrate deploy && npm run build",
+    "build:vercel": "npm run lint && prisma migrate deploy && npm run build",
     "typecheck": "prisma generate && tsc -b && tsc -p tsconfig.server.json --noEmit",
     "lint": "oxlint client server shared api tests",
     "start": "node dist-server/server/index.js",

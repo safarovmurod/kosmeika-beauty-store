@@ -36,15 +36,18 @@ export async function buildApp(options: { serverless?: boolean; logger?: boolean
   if (fastifyStatic) {
     await app.register(fastifyStatic, { root: uploads, prefix: '/uploads/', decorateReply: false, setHeaders: (response) => { response.header('X-Content-Type-Options', 'nosniff'); response.header('Content-Disposition', 'inline'); } });
   }
-  if (options.serverless) {
-    app.get<{ Params: { file: string } }>('/uploads/:file', async (request, reply) => {
+  app.get<{ Params: { file: string } }>('/uploads/:file', async (request, reply) => {
       const name = /^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(-thumb)?\.webp$/.exec(request.params.file);
       if (!name) return reply.code(404).send({ error: 'Фото не найдено' });
+      // Locally uploaded files and permanent database photos use the same URL.
+      if (!options.serverless) {
+        try { return reply.type('image/webp').header('X-Content-Type-Options', 'nosniff').send(await readFile(path.join(uploads, request.params.file))); }
+        catch (error) { if (!(error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT')) throw error; }
+      }
       const image = await db.image.findUnique({ where: { id: name[1] } });
       if (!image) return reply.code(404).send({ error: 'Фото не найдено' });
       return reply.type('image/webp').header('X-Content-Type-Options', 'nosniff').header('Cache-Control', 'public, max-age=31536000, immutable').send(Buffer.from(name[2] ? image.thumbnail : image.content));
     });
-  }
   const hash = (value: string) => createHash('sha256').update(value).digest('hex');
   const dummyHash = await argon2.hash(randomBytes(24).toString('hex'), { type: argon2.argon2id, memoryCost: 19456, timeCost: 2, parallelism: 1 });
   const getSession = async (token?: string) => token ? db.session.findFirst({ where: { id: hash(token), expiresAt: { gt: new Date() } } }) : null;
@@ -165,7 +168,7 @@ export async function buildApp(options: { serverless?: boolean; logger?: boolean
       return reply.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map((url) => `<url><loc>${escapeHtml(url)}</loc></url>`).join('')}</urlset>`);
     });
     app.get('/', async (request, reply) => {
-      const query = z.object({ product: z.string().max(100).optional(), variant: z.string().max(100).optional() }).safeParse(request.query);
+      const query = z.object({ product: z.string().max(100).optional(), variant: z.string().max(100).optional(), photo: z.string().regex(/^\d{1,2}$/).optional() }).safeParse(request.query);
       const product = query.success && query.data.product ? await db.product.findFirst({ where: { id: query.data.product, visible: true } }) : null;
       let html = await readFile(path.resolve('dist/index.html'), 'utf8');
       if (product && query.success) {
@@ -173,7 +176,8 @@ export async function buildApp(options: { serverless?: boolean; logger?: boolean
         const selected = variants.success ? variants.data.find((v) => v.id === query.data.variant) || variants.data[0] : null;
         const title = escapeHtml(product.name); const description = escapeHtml(product.description.slice(0, 180) || 'Каталог косметики');
         html = html.replace(/<title>.*?<\/title>/, `<title>${title}</title>`).replace(/<meta property="og:title" content="[^"]*"\s*\/>/, `<meta property="og:title" content="${title}"/>`).replace(/<meta property="og:description" content="[^"]*"\s*\/>/, `<meta property="og:description" content="${description}"/>`);
-        if (selected?.images[0]) html = html.replace('</head>', `<meta property="og:image" content="${escapeHtml(new URL(selected.images[0], origin).href)}"/></head>`);
+        const image = selected?.images[Number(query.data.photo || 0)] || selected?.images[0];
+        if (image) html = html.replace('</head>', `<meta property="og:image" content="${escapeHtml(new URL(image, origin).href)}"/><meta property="og:image:alt" content="${title}"/></head>`);
       }
       return reply.type('text/html').send(html);
     });

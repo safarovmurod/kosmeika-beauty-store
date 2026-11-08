@@ -36,9 +36,9 @@ model Product {
   volume      String   @default("")
   categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])
-  price       Int
+  price       Int?
   salePrice   Int?
-  available   Boolean  @default(true)
+  available   Boolean?
   visible     Boolean  @default(false)
   isNew       Boolean  @default(false)
   recommended Boolean  @default(false)

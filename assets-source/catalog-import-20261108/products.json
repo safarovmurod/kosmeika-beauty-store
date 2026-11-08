@@ -1,0 +1,98 @@
+[
+  {
+    "existingNumber": 2,
+    "name": "Air Freshener Jasmine — освежитель воздуха",
+    "description": "Аэрозольный освежитель воздуха с ароматом жасмина. Помогает освежить помещение и уменьшить неприятные запахи. Зелёный баллон 300 мл; на фото показан полный товар.",
+    "usage": "Используйте по инструкции на баллоне. Не распыляйте рядом с огнём и на кожу.",
+    "volume": "300 мл",
+    "variants": [{ "id": "demo-002", "name": "Jasmine", "color": "#64bf15", "photo": "air-jasmine", "sku": "KSM-002" }]
+  },
+  {
+    "existingNumber": 13,
+    "name": "Avon Incandessence — парфюмерная вода",
+    "description": "Парфюмерная вода Incandessence в светлом флаконе с янтарной жидкостью. Аромат для повседневного образа; флакон и коробка показаны на фото.",
+    "volume": "",
+    "variants": [{ "id": "demo-013", "name": "Incandessence", "color": "#e8ac36", "photo": "photo-09", "sku": "KSM-013" }]
+  },
+  {
+    "existingNumber": 14,
+    "name": "Hamidi CPO — масляные духи",
+    "description": "Концентрированные масляные духи Hamidi в компактном флаконе 15 мл. Два аромата: Golden Blossom и Sara Lily. Переключите фото, чтобы выбрать нужный вариант.",
+    "volume": "15 мл",
+    "variants": [{ "id": "demo-014", "name": "Golden Blossom", "color": "#99c936", "photo": "photo-06", "sku": "KSM-014-GB" }, { "id": "hamidi-sara-lily-15", "name": "Sara Lily", "color": "#e5a1c7", "photo": "photo-05", "sku": "KSM-014-SL" }]
+  },
+  {
+    "existingNumber": 16,
+    "name": "Golden Blossom — парфюмерная вода",
+    "description": "Парфюмерная вода Golden Blossom, 50 мл. Цветочная упаковка с розами; удобный формат для любимого аромата на каждый день. На фотографии показана коробка товара.",
+    "volume": "50 мл",
+    "variants": [{ "id": "demo-016", "name": "Golden Blossom EDP", "color": "#b93c6e", "photo": "photo-01", "sku": "KSM-016" }]
+  },
+  {
+    "existingNumber": 20,
+    "name": "LALARECIPE Yuzu — очищающее средство 3 в 1",
+    "description": "Пенящееся средство Yuzu Self Foaming 3in1 Peel Cleanse. Очищает кожу от загрязнений и макияжа, сочетает пенку и отшелушивание. Флакон с дозатором — удобно отмерять порцию.",
+    "usage": "Используйте по инструкции на упаковке, избегая области глаз. Тщательно смойте водой.",
+    "volume": "200 мл",
+    "variants": [{ "id": "demo-020", "name": "Yuzu 3in1", "color": "#edb229", "photo": "photo-04", "sku": "KSM-020" }]
+  },
+  {
+    "existingNumber": 23,
+    "name": "Agilise Collagen Blonder — осветляющее средство",
+    "description": "Средство Collagen Blonder в упаковке Agilise. Предназначено для осветления волос; результат зависит от исходного цвета и соблюдения инструкции. Комплектацию уточните перед заказом.",
+    "usage": "Следуйте инструкции именно на этой упаковке. Соблюдайте указанные пропорции и время выдержки.",
+    "volume": "",
+    "variants": [{ "id": "demo-023", "name": "Collagen Blonder", "color": "#bca2cf", "photo": "photo-13", "sku": "KSM-023" }]
+  },
+  {
+    "existingNumber": 27,
+    "name": "MAXFASFER BB 7+ — BB-крем",
+    "description": "Тональный BB-крем White Cream 7+ Herbal Extracts в тюбике. Помогает визуально выровнять тон кожи и дополнить ежедневный макияж. Номер оттенка уточните перед заказом.",
+    "usage": "Наносите небольшое количество на подготовленную кожу, равномерно растушёвывая.",
+    "volume": "",
+    "variants": [{ "id": "demo-027", "name": "BB 7+", "color": "#d6b58e", "photo": "photo-03", "sku": "KSM-027" }]
+  },
+  {
+    "newId": "catalog-20261108-bellissima-cream",
+    "category": "Для тела",
+    "name": "Bellissima Sexy+18 — парфюмированный крем для тела",
+    "description": "Парфюмированный крем для тела Bellissima Cosmetics Sexy+18. Кремовая текстура для ухода за кожей и аромата после душа. Баночка 250 мл с крышкой.",
+    "usage": "Нанесите небольшое количество на чистую кожу тела по инструкции производителя.",
+    "volume": "250 мл",
+    "variants": [{ "id": "bellissima-sexy18-cream-250", "name": "Sexy+18 · крем", "color": "#8e1738", "photo": "photo-02", "sku": "KSM-029" }]
+  },
+  {
+    "newId": "catalog-20261108-affection",
+    "category": "Парфюмерия",
+    "name": "Elegance Collection Affection — парфюмерная вода",
+    "description": "Парфюмерная вода Affection от Elegance Collection. Флакон в форме сердца и розовая коробка — выразительный вариант для подарка. Объём 50 мл.",
+    "volume": "50 мл",
+    "variants": [{ "id": "elegance-affection-edp-50", "name": "Affection", "color": "#d4a381", "photo": "photo-07", "sku": "KSM-030" }]
+  },
+  {
+    "newId": "catalog-20261108-bellissima-mist",
+    "category": "Для тела",
+    "name": "Bellissima Sexy+18 — парфюмированный спрей для тела",
+    "description": "Парфюмированный body mist Bellissima Cosmetics, 250 мл. Распылитель удобно распределяет аромат. Два варианта: Sexy+18 и Sexy+18 Pink — выберите нужный слайдом.",
+    "usage": "Используйте на коже тела по инструкции на флаконе, избегая лица и глаз.",
+    "volume": "250 мл",
+    "variants": [{ "id": "bellissima-sexy18-mist-250", "name": "Sexy+18", "color": "#c69d47", "photo": "photo-08", "sku": "KSM-031-G" }, { "id": "bellissima-sexy18-pink-mist-250", "name": "Sexy+18 Pink", "color": "#d82582", "photo": "photo-10", "sku": "KSM-031-P" }]
+  },
+  {
+    "newId": "catalog-20261108-formula-jasmine",
+    "category": "Парфюмерия",
+    "name": "Formula Jasmine — концентрированные духи",
+    "description": "Концентрированные духи Formula Jasmine в небольшом круглом флаконе. Компактный формат 25 мл удобно брать с собой. На фото — флакон и цветочная коробка.",
+    "volume": "25 мл",
+    "variants": [{ "id": "formula-jasmine-25", "name": "Jasmine", "color": "#6e3e91", "photo": "photo-11", "sku": "KSM-032" }]
+  },
+  {
+    "newId": "catalog-20261108-airspun-powder",
+    "category": "Макияж",
+    "name": "Airspun — рассыпчатая пудра для лица",
+    "description": "Рассыпчатая пудра Airspun Loose Face Powder. Помогает закрепить макияж и сделать финиш более матовым. Лёгкую рассыпчатую текстуру удобно наносить кистью или пуховкой; оттенок уточните перед заказом.",
+    "usage": "Нанесите тонким слоем поверх макияжа или на подготовленную кожу.",
+    "volume": "",
+    "variants": [{ "id": "airspun-loose-face-powder", "name": "Как на фото", "color": "#eac2a1", "photo": "photo-12", "sku": "KSM-033" }]
+  }
+]

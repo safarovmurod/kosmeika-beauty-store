@@ -2,6 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Product, Variant } from '../shared/schema';
 import { orderLink } from '../client/whatsapp';
+import { productSchema } from '../shared/schema';
+import { availability } from '../shared/availability';
 
 const first: Variant = { id: 'pink', name: 'Розовый', color: '#ffbbcc', sku: 'SKU-1', available: true, price: null, images: ['/images/pink.webp'] };
 const second: Variant = { ...first, id: 'red', name: 'Красный', sku: 'SKU-2', price: 12500, images: ['/images/red.webp', '/images/red-back.webp'] };
@@ -32,4 +34,25 @@ test('sale price and missing photo produce a valid message without a broken phot
   assert.ok(message.includes('90 сомони'));
   assert.ok(!message.includes('Фото:'));
   assert.ok(!message.includes('undefined'));
+});
+
+test('empty price and availability stay empty and never become a stock promise', () => {
+  const unset = { ...product, price: null, salePrice: null, available: null, variants: [{ ...first, available: null }] };
+  assert.ok(productSchema.safeParse(unset).success);
+  assert.equal(availability(unset, unset.variants[0]), null);
+  assert.equal(availability({ available: true }, unset.variants[0]), true);
+  assert.equal(availability({ available: false }, first), false);
+  assert.equal(availability(product, { ...first, available: false }), false);
+  assert.ok(!productSchema.safeParse({ ...unset, salePrice: 100 }).success);
+  const message = new URL(orderLink(unset, unset.variants[0], '', undefined, origin)).searchParams.get('text')!;
+  assert.ok(message.includes('уточнить цену и наличие'));
+  assert.ok(message.includes('Артикул: SKU-1'));
+  assert.ok(!message.includes('0 сомони'));
+});
+
+test('the gallery photo link carries a bounded local index for the selected variant', () => {
+  const message = new URL(orderLink(product, second, '', second.images[1], origin)).searchParams.get('text')!;
+  assert.ok(message.includes('variant=red&photo=1'));
+  const missingSku = new URL(orderLink(product, { ...second, sku: '' }, '', undefined, origin)).searchParams.get('text')!;
+  assert.ok(missingSku.includes('Артикул: red'));
 });
