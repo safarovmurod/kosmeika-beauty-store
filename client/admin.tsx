@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { api, money } from './api';
+import { api } from './api';
 import StatsDetails from './stats-details';
 import type { Category, Product } from '../shared/schema';
 import ProductEditor from './product-editor';
