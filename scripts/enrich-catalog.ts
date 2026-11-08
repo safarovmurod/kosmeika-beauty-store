@@ -16,10 +16,12 @@ try {
       const product = products.find((item) => item.name === `Демонстрационный товар ${entry.number}`);
       if (!product) { skipped++; continue; }
       const parsed = z.array(variantSchema).safeParse(product.variants);
-      if (!parsed.success || parsed.data.length !== 1 || parsed.data[0].id !== `demo-${number}` || parsed.data[0].images.length !== 1 || parsed.data[0].images[0] !== `/images/products/product_${number}.webp`) { skipped++; continue; }
+      const expectedImages = [`/images/products/product_${number}.webp`, `/images/products/product_${number}-v3.webp`];
+      const pendingPhoto = [2,26].includes(entry.number);
+      if (!parsed.success || parsed.data.length !== 1 || parsed.data[0].id !== `demo-${number}` || !((parsed.data[0].images.length === 1 && expectedImages.includes(parsed.data[0].images[0])) || (pendingPhoto && parsed.data[0].images.length === 0))) { skipped++; continue; }
       if (!apply) { updated++; continue; }
       const category = await tx.category.upsert({ where: { name: entry.category }, create: { name: entry.category }, update: {} });
-      const variants = parsed.data.map((variant) => ({ ...variant, name: variant.name === 'Без оттенка' ? 'Как на фото' : variant.name, images: entry.image ? [`/images/products/${entry.image}.webp`] : variant.images }));
+      const variants = parsed.data.map((variant) => ({ ...variant, name: variant.name === 'Без оттенка' ? 'Как на фото' : variant.name, images: pendingPhoto ? [] : entry.image ? [`/images/products/${entry.image}.webp`] : variant.images }));
       // Guard against concurrent owner edits; prices, availability and IDs stay intact.
       const result = await tx.product.updateMany({ where: { id: product.id, name: product.name, updatedAt: product.updatedAt }, data: { name: entry.name, description: entry.description, volume: product.volume || entry.volume || '', categoryId: category.id, variants } });
       if (result.count) updated++; else skipped++;

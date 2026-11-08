@@ -1,30 +1,238 @@
 [
-  { "number": 1, "name": "Faberlic Beauty Cafe «Мокачино» — гель для душа", "category": "Для тела", "description": "Гель для душа Beauty Cafe с ароматом мокачино. Средство для очищения кожи тела." },
-  { "number": 2, "name": "Air Fresh — освежитель воздуха", "category": "Для дома", "description": "Аэрозольный освежитель воздуха Air Fresh в зелёном баллоне. Вариант аромата можно уточнить у магазина.", "needsReview": "Часть исходного баллона отсутствует; аромат и объём не читаются. Другой аромат не подставлять." },
-  { "number": 3, "name": "Faberlic «Нежный ландыш» — гель для душа", "category": "Для тела", "description": "Гель для душа Faberlic «Нежный ландыш». Средство для очищения кожи тела с цветочным ароматом." },
-  { "number": 4, "name": "Faberlic «Чёрный тмин» — шампунь", "category": "Для волос", "description": "Шампунь Faberlic серии «Чёрный тмин». Предназначен для очищения волос и кожи головы." },
-  { "number": 5, "name": "Trichup Healthy, Long & Strong — шампунь с кондиционером", "category": "Для волос", "description": "Травяной шампунь Trichup Healthy, Long & Strong с кондиционером. Средство для мытья волос; на фото зелёная упаковка 400 мл.", "volume": "400 мл", "image": "product_005-v2", "sources": ["https://www.trichup.com/en/trichup-healthy-long-strong-shampoo/", "https://www.noon.com/uae-en/herbal-shampoo-with-conditioner-400ml/N28185781A/p/"], "imageSource": "https://f.nooncdn.com/p/v1608132292/N28185781A_1.jpg" },
-  { "number": 6, "name": "Faberlic Cocktail Story — парфюмерия", "category": "Парфюмерия", "description": "Аромат Faberlic Cocktail Story в бирюзовом флаконе с янтарной крышкой. Концентрацию и объём можно уточнить у магазина." },
-  { "number": 7, "name": "Faberlic Just Bloom Tulip — парфюмерия", "category": "Парфюмерия", "description": "Аромат Faberlic Just Bloom Tulip. Флакон с крышкой в форме лепестков и коробка с изображением тюльпанов." },
-  { "number": 8, "name": "Asdaaf Ameerat Al Arab Prive Rose — парфюмерная вода", "category": "Парфюмерия", "description": "Парфюмерная вода Asdaaf Ameerat Al Arab Prive Rose. Розовый флакон с золотистой крышкой, в коробке.", "volume": "100 мл" },
-  { "number": 9, "name": "Mary Kay Belara — парфюмерия", "category": "Парфюмерия", "description": "Аромат Belara в высоком сине-бирюзовом флаконе. Объём и концентрацию можно уточнить у магазина." },
-  { "number": 10, "name": "Asdaaf Ameerat Al Arab — парфюмерная вода", "category": "Парфюмерия", "description": "Парфюмерная вода Asdaaf Ameerat Al Arab. Красный флакон с золотистой крышкой, в красной коробке.", "volume": "100 мл" },
-  { "number": 11, "name": "Coco Pink Pour Femme — парфюмерный набор", "category": "Парфюмерия", "description": "Парфюмерный набор Coco Pink Pour Femme в чёрной коробке с цветами. Комплектацию и объёмы флаконов можно уточнить у магазина.", "sources": ["https://www.mercadolibre.com.mx/set-de-perfumes-100ml15ml-para-mujer-ideal-para-citas/up/MLMU3126144648"], "needsReview": "Полный совпадающий набор найден; два результата AI-фонгирии оставили цветной фон, поэтому не публиковать эти варианты." },
-  { "number": 12, "name": "La Vida Es Bella — парфюмерная вода", "category": "Парфюмерия", "description": "Парфюмерная вода La Vida Es Bella в круглом флаконе с белой лентой. Название указано так, как на флаконе.", "volume": "100 мл", "needsReview": "Производитель не читается; не подменять на Lancôme или иной бренд по похожему названию." },
-  { "number": 13, "name": "Avon Incandessence — парфюмерия", "category": "Парфюмерия", "description": "Аромат Incandessence в круглом оранжевом флаконе с матовой светлой крышкой. Объём можно уточнить у магазина." },
-  { "number": 14, "name": "Парфюм в круглом флаконе — узорная коробка", "category": "Парфюмерия", "description": "Парфюм в прозрачном круглом флаконе с золотистой крышкой. Точное название и объём можно уточнить у магазина.", "needsReview": "Надписи на размытом снимке не читаются. Марка не установлена." },
-  { "number": 15, "name": "Pink Sexy Scandal Sexy Sexy — парфюмерная вода", "category": "Парфюмерия", "description": "Парфюмерная вода Pink Sexy Scandal Sexy Sexy. Флакон с золотистой фигурной крышкой и розовая коробка.", "volume": "50 мл", "image": "product_015-v2", "sources": ["https://www.farmaciaamorpy.com/item/perfume-onlyou-50ml-sexy-sacandal-sexy-sexyref-b922-064231"], "imageSource": "https://www.farmaciaamorpy.com/storage/images/products/1740234558D7w9IY3v.png" },
-  { "number": 16, "name": "Парфюм в упаковке с женским портретом", "category": "Парфюмерия", "description": "Парфюм в фигурной упаковке с женским портретом. Точное название, производитель и объём можно уточнить у магазина.", "needsReview": "Текст на флаконе не читается достаточно уверенно." },
-  { "number": 17, "name": "Viktoria Sekret — парфюмерная вода", "category": "Парфюмерия", "description": "Парфюмерная вода в розовой коробке с надписью Viktoria Sekret. Вариант аромата и объём можно уточнить у магазина.", "needsReview": "Не подменять фотографией Victoria’s Secret Bombshell: написание на исходной коробке отличается." },
-  { "number": 18, "name": "Night Lure — подарочный набор для тела", "category": "Для тела", "description": "Набор Night Lure в чёрно-золотистой упаковке: ароматический спрей, гель для душа и лосьон для тела. Объёмы можно уточнить у магазина.", "needsReview": "Бренд над названием неразборчив. Не приписывать Victoria’s Secret." },
-  { "number": 19, "name": "Heaven Dove 24K Gold — маска для лица", "category": "Для лица", "description": "Маска для лица Heaven Dove серии 24K Gold в золотистой коробке. Формат маски и количество в наборе можно уточнить у магазина.", "needsReview": "Не заменять тюбиком peel-off: в исходнике другая упаковка." },
-  { "number": 20, "name": "Косметическое средство — жёлтый флакон", "category": "Для лица", "description": "Косметическое средство в жёлтом флаконе с розовой крышкой. Точное название, назначение и объём можно уточнить у магазина.", "needsReview": "Надписи неразборчивы. Назначение для демакияжа не установлено уверенно; не добавлять непроверенные состав и способ применения." },
-  { "number": 21, "name": "Veet Easy-Gel — восковые полоски", "category": "Для тела", "description": "Восковые полоски Veet Easy-Gel для депиляции, вариант для нормальной кожи. Розовая упаковка с изображением ягод и масла ши." },
-  { "number": 22, "name": "Collagen Ultra Protect — солнцезащитный крем", "category": "Для лица", "description": "Крем Collagen Ultra Protect в золотисто-чёрном тюбике и коробке. На упаковке указана маркировка SPF 90+.", "needsReview": "Полный производитель и характеристики защиты не подтверждены; не обещать клиническую эффективность." },
-  { "number": 23, "name": "Lactise Collagen Blonder — средство для окрашивания волос", "category": "Для волос", "description": "Средство для окрашивания волос Lactise Collagen Blonder в коробке с изображением светлых волос. Номер оттенка и комплектацию можно уточнить у магазина.", "needsReview": "Точный оттенок и инструкция с обратной стороны недоступны." },
-  { "number": 24, "name": "Lazurde — косметический крем", "category": "Для тела", "description": "Косметический крем Lazurde в светлой баночке с розовыми цветами. Вариант и объём можно уточнить у магазина.", "sources": ["https://oziqovqat.com/uploads/products/10800/1706170367-831c5babbe3b0e70d20ea66d55d129db.pdf"], "needsReview": "Есть разные кремы Lazurde; тип крема-дезодоранта для этой банки не подтверждён по этикетке." },
-  { "number": 25, "name": "Clinique Dramatically Different — увлажняющий гель", "category": "Для лица", "description": "Увлажняющий гель Clinique Dramatically Different Moisturizing Gel. Жёлтый гель во флаконе с помпой." },
-  { "number": 26, "name": "Fruits Plus Strawberry — средство для умывания", "category": "Для лица", "description": "Средство для умывания Fruits Plus Strawberry в красном флаконе с помпой. Вариант с клубникой; бренд и объём можно уточнить у магазина.", "needsReview": "Марка над Fruits Plus не установлена уверенно; не угадывать по похожему логотипу." },
-  { "number": 27, "name": "BB-крем 7+ — тональный уход", "category": "Макияж", "description": "BB-крем с обозначением 7+ в серебристо-зелёной коробке. Оттенок и объём можно уточнить у магазина.", "needsReview": "Не приписывать Garnier по надписи на обороте: изготовитель и линейка не подтверждены." },
-  { "number": 28, "name": "BB Blemish Base 6 in 1 — BB-крем", "category": "Макияж", "description": "BB-крем Blemish Base 6 in 1 в светло-бирюзовом тюбике и коробке с изображением оливок. Оттенок можно уточнить у магазина.", "needsReview": "Изготовитель неразборчив; не добавлять непроверенные SPF и состав." }
+  {
+    "number": 1,
+    "name": "Faberlic Beauty Cafe «Мокачино» — гель для душа",
+    "category": "Для тела",
+    "description": "Гель для душа Beauty Cafe с ароматом мокачино. Средство для очищения кожи тела.",
+    "image": "product_001-v3"
+  },
+  {
+    "number": 2,
+    "name": "Air Fresh — освежитель воздуха",
+    "category": "Для дома",
+    "description": "Аэрозольный освежитель воздуха Air Fresh в зелёном баллоне. Вариант аромата можно уточнить у магазина.",
+    "needsReview": "Часть исходного баллона отсутствует; аромат и объём не читаются. Другой аромат не подставлять.",
+    "photoStatus": "A full original photograph is required for a verified 1:1 replacement."
+  },
+  {
+    "number": 3,
+    "name": "Faberlic «Яблочный» — гель для душа",
+    "category": "Для тела",
+    "description": "Яблочный гель для душа Faberlic Sunny Caucasus Green Apple. Средство для очищения кожи тела с ароматом зелёного яблока.",
+    "image": "product_003-v3",
+    "sources": [
+      "https://faberlic.by/index.php?Itemid=2075&id=1001704842203&lang=kz&option=com_catalog&view=goods"
+    ]
+  },
+  {
+    "number": 4,
+    "name": "Faberlic «Чёрный тмин» — шампунь",
+    "category": "Для волос",
+    "description": "Шампунь Faberlic серии «Чёрный тмин». Предназначен для очищения волос и кожи головы.",
+    "image": "product_004-v3"
+  },
+  {
+    "number": 5,
+    "name": "Trichup Healthy, Long & Strong — шампунь с кондиционером",
+    "category": "Для волос",
+    "description": "Травяной шампунь Trichup Healthy, Long & Strong с кондиционером. Средство для мытья волос; на фото зелёная упаковка 400 мл.",
+    "volume": "400 мл",
+    "image": "product_005-v3",
+    "sources": [
+      "https://www.trichup.com/en/trichup-healthy-long-strong-shampoo/",
+      "https://www.noon.com/uae-en/herbal-shampoo-with-conditioner-400ml/N28185781A/p/"
+    ],
+    "imageSource": "https://f.nooncdn.com/p/v1608132292/N28185781A_1.jpg",
+    "photoMethod": "Original photograph; non-generative background removal. Previous AI cutout superseded."
+  },
+  {
+    "number": 6,
+    "name": "Faberlic Cocktail Story — парфюмерия",
+    "category": "Парфюмерия",
+    "description": "Аромат Faberlic Cocktail Story в бирюзовом флаконе с янтарной крышкой. Концентрацию и объём можно уточнить у магазина.",
+    "image": "product_006-v3"
+  },
+  {
+    "number": 7,
+    "name": "Faberlic Just Bloom Tulip — парфюмерия",
+    "category": "Парфюмерия",
+    "description": "Аромат Faberlic Just Bloom Tulip. Флакон с крышкой в форме лепестков и коробка с изображением тюльпанов.",
+    "image": "product_007-v3"
+  },
+  {
+    "number": 8,
+    "name": "Asdaaf Ameerat Al Arab Prive Rose — парфюмерная вода",
+    "category": "Парфюмерия",
+    "description": "Парфюмерная вода Asdaaf Ameerat Al Arab Prive Rose. Розовый флакон с золотистой крышкой, в коробке.",
+    "volume": "100 мл",
+    "image": "product_008-v3"
+  },
+  {
+    "number": 9,
+    "name": "Mary Kay Belara — парфюмерия",
+    "category": "Парфюмерия",
+    "description": "Аромат Belara в высоком сине-бирюзовом флаконе. Объём и концентрацию можно уточнить у магазина.",
+    "image": "product_009-v3"
+  },
+  {
+    "number": 10,
+    "name": "Asdaaf Ameerat Al Arab — парфюмерная вода",
+    "category": "Парфюмерия",
+    "description": "Парфюмерная вода Asdaaf Ameerat Al Arab. Красный флакон с золотистой крышкой, в красной коробке.",
+    "volume": "100 мл",
+    "image": "product_010-v3"
+  },
+  {
+    "number": 11,
+    "name": "Coco Pink Pour Femme — парфюмерный набор",
+    "category": "Парфюмерия",
+    "description": "Парфюмерный набор Coco Pink Pour Femme в чёрной коробке с цветами. Комплектацию и объёмы флаконов можно уточнить у магазина.",
+    "sources": [
+      "https://www.mercadolibre.com.mx/set-de-perfumes-100ml15ml-para-mujer-ideal-para-citas/up/MLMU3126144648"
+    ],
+    "needsReview": "Matching complete set photograph selected; non-generative cutout preserves original lettering.",
+    "image": "product_011-v3"
+  },
+  {
+    "number": 12,
+    "name": "La Vida Es Bella — парфюмерная вода",
+    "category": "Парфюмерия",
+    "description": "Парфюмерная вода La Vida Es Bella в круглом флаконе с белой лентой. Название указано так, как на флаконе.",
+    "volume": "100 мл",
+    "needsReview": "Производитель не читается; не подменять на Lancôme или иной бренд по похожему названию.",
+    "image": "product_012-v3"
+  },
+  {
+    "number": 13,
+    "name": "Avon Incandessence — парфюмерия",
+    "category": "Парфюмерия",
+    "description": "Аромат Incandessence в круглом оранжевом флаконе с матовой светлой крышкой. Объём можно уточнить у магазина.",
+    "image": "product_013-v3"
+  },
+  {
+    "number": 14,
+    "name": "Парфюм в круглом флаконе — узорная коробка",
+    "category": "Парфюмерия",
+    "description": "Парфюм в прозрачном круглом флаконе с золотистой крышкой. Точное название и объём можно уточнить у магазина.",
+    "needsReview": "Надписи на размытом снимке не читаются. Марка не установлена.",
+    "image": "product_014-v3"
+  },
+  {
+    "number": 15,
+    "name": "Pink Sexy Scandal Sexy Sexy — парфюмерная вода",
+    "category": "Парфюмерия",
+    "description": "Парфюмерная вода Pink Sexy Scandal Sexy Sexy. Флакон с золотистой фигурной крышкой и розовая коробка.",
+    "volume": "50 мл",
+    "image": "product_015-v3",
+    "sources": [
+      "https://www.farmaciaamorpy.com/item/perfume-onlyou-50ml-sexy-sacandal-sexy-sexyref-b922-064231"
+    ],
+    "imageSource": "https://www.farmaciaamorpy.com/storage/images/products/1740234558D7w9IY3v.png",
+    "photoMethod": "Original photograph; non-generative background removal. Previous AI cutout superseded."
+  },
+  {
+    "number": 16,
+    "name": "Парфюм в упаковке с женским портретом",
+    "category": "Парфюмерия",
+    "description": "Парфюм в фигурной упаковке с женским портретом. Точное название, производитель и объём можно уточнить у магазина.",
+    "needsReview": "Текст на флаконе не читается достаточно уверенно.",
+    "image": "product_016-v3"
+  },
+  {
+    "number": 17,
+    "name": "Viktoria Sekret — парфюмерная вода",
+    "category": "Парфюмерия",
+    "description": "Парфюмерная вода в розовой коробке с надписью Viktoria Sekret. Вариант аромата и объём можно уточнить у магазина.",
+    "needsReview": "Не подменять фотографией Victoria’s Secret Bombshell: написание на исходной коробке отличается.",
+    "image": "product_017-v3"
+  },
+  {
+    "number": 18,
+    "name": "Night Lure — подарочный набор для тела",
+    "category": "Для тела",
+    "description": "Набор Night Lure в чёрно-золотистой упаковке: ароматический спрей, гель для душа и лосьон для тела. Объёмы можно уточнить у магазина.",
+    "needsReview": "Бренд над названием неразборчив. Не приписывать Victoria’s Secret.",
+    "image": "product_018-v3"
+  },
+  {
+    "number": 19,
+    "name": "Heaven Dove 24K Gold — маска для лица",
+    "category": "Для лица",
+    "description": "Маска для лица Heaven Dove серии 24K Gold в золотистой коробке. Формат маски и количество в наборе можно уточнить у магазина.",
+    "needsReview": "Не заменять тюбиком peel-off: в исходнике другая упаковка.",
+    "image": "product_019-v3"
+  },
+  {
+    "number": 20,
+    "name": "Косметическое средство — жёлтый флакон",
+    "category": "Для лица",
+    "description": "Косметическое средство в жёлтом флаконе с розовой крышкой. Точное название, назначение и объём можно уточнить у магазина.",
+    "needsReview": "Надписи неразборчивы. Назначение для демакияжа не установлено уверенно; не добавлять непроверенные состав и способ применения.",
+    "image": "product_020-v3"
+  },
+  {
+    "number": 21,
+    "name": "Veet Easy-Gel — восковые полоски",
+    "category": "Для тела",
+    "description": "Восковые полоски Veet Easy-Gel для депиляции, вариант для нормальной кожи. Розовая упаковка с изображением ягод и масла ши.",
+    "image": "product_021-v3"
+  },
+  {
+    "number": 22,
+    "name": "Collagen Ultra Protect — солнцезащитный крем",
+    "category": "Для лица",
+    "description": "Крем Collagen Ultra Protect в золотисто-чёрном тюбике и коробке. На упаковке указана маркировка SPF 90+.",
+    "needsReview": "Полный производитель и характеристики защиты не подтверждены; не обещать клиническую эффективность.",
+    "image": "product_022-v3"
+  },
+  {
+    "number": 23,
+    "name": "Lactise Collagen Blonder — средство для окрашивания волос",
+    "category": "Для волос",
+    "description": "Средство для окрашивания волос Lactise Collagen Blonder в коробке с изображением светлых волос. Номер оттенка и комплектацию можно уточнить у магазина.",
+    "needsReview": "Точный оттенок и инструкция с обратной стороны недоступны.",
+    "image": "product_023-v3"
+  },
+  {
+    "number": 24,
+    "name": "Lazurde — косметический крем",
+    "category": "Для тела",
+    "description": "Косметический крем Lazurde в светлой баночке с розовыми цветами. Вариант и объём можно уточнить у магазина.",
+    "sources": [
+      "https://oziqovqat.com/uploads/products/10800/1706170367-831c5babbe3b0e70d20ea66d55d129db.pdf"
+    ],
+    "needsReview": "Есть разные кремы Lazurde; тип крема-дезодоранта для этой банки не подтверждён по этикетке.",
+    "image": "product_024-v3"
+  },
+  {
+    "number": 25,
+    "name": "Clinique Dramatically Different — увлажняющий гель",
+    "category": "Для лица",
+    "description": "Увлажняющий гель Clinique Dramatically Different Moisturizing Gel. Жёлтый гель во флаконе с помпой.",
+    "image": "product_025-v3"
+  },
+  {
+    "number": 26,
+    "name": "Fruits Plus Strawberry — средство для умывания",
+    "category": "Для лица",
+    "description": "Средство для умывания Fruits Plus Strawberry в красном флаконе с помпой. Вариант с клубникой; бренд и объём можно уточнить у магазина.",
+    "needsReview": "Марка над Fruits Plus не установлена уверенно; не угадывать по похожему логотипу.",
+    "photoStatus": "A full original photograph is required for a verified 1:1 replacement."
+  },
+  {
+    "number": 27,
+    "name": "BB-крем 7+ — тональный уход",
+    "category": "Макияж",
+    "description": "BB-крем с обозначением 7+ в серебристо-зелёной коробке. Оттенок и объём можно уточнить у магазина.",
+    "needsReview": "Не приписывать Garnier по надписи на обороте: изготовитель и линейка не подтверждены.",
+    "image": "product_027-v3"
+  },
+  {
+    "number": 28,
+    "name": "BB Blemish Base 6 in 1 — BB-крем",
+    "category": "Макияж",
+    "description": "BB-крем Blemish Base 6 in 1 в светло-бирюзовом тюбике и коробке с изображением оливок. Оттенок можно уточнить у магазина.",
+    "needsReview": "Изготовитель неразборчив; не добавлять непроверенные SPF и состав.",
+    "image": "product_028-v3"
+  }
 ]

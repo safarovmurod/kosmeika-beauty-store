@@ -1,22 +1,37 @@
 # Product photo review — 8 November 2026
 
-All 28 originals were inspected. `scripts/catalog-content.json` records visible names, basic product types, sources, and unresolved identifications. No prices, stock quantities, authenticity claims, medical effects, or complete ingredient lists were inferred from packaging.
+The owner requires the same products and packaging details 1:1. This supersedes the earlier permission to reconstruct unclear details. **No generated reconstruction from this review is selected for publication.** Previous generated Trichup/Pink cutouts are superseded by original photographs with non-generative background removal.
 
-Two replacements match the product name, size, bottle, and packaging in the originals:
+All 28 photographs were inspected. The current selection contains 26 transparent product photos with consistent framing and two empty photo slots awaiting verified full originals. The 1000 × 1200 full-size WebP exports are lossless. Small-source resizing improves consistent presentation; it does not recover lost photographic detail.
 
-| Original | Reviewed replacement | Source |
+## Matching replacement photographs
+
+| No. | Product | Source |
 | --- | --- | --- |
-| product_005.png | product_005-v2.png / .webp | [Trichup Herbal Shampoo With Conditioner 400ml](https://www.noon.com/uae-en/herbal-shampoo-with-conditioner-400ml/N28185781A/p/) |
-| product_015.png | product_015-v2.png / .webp | [Pink Sexy Scandal 50ml, ref. B922](https://www.farmaciaamorpy.com/item/perfume-onlyou-50ml-sexy-sacandal-sexy-sexyref-b922-064231) |
+| 003 | Faberlic Apple Shower Gel | [Official Faberlic product](https://faberlic.by/index.php?Itemid=2075&id=1001704842203&lang=kz&option=com_catalog&view=goods) |
+| 005 | Trichup Herbal Shampoo With Conditioner 400ml | [Noon](https://www.noon.com/uae-en/herbal-shampoo-with-conditioner-400ml/N28185781A/p/) |
+| 011 | Coco Pink Pour Femme matching black floral box and mini | [Matching complete set](https://www.mercadolibre.com.mx/set-de-perfumes-100ml15ml-para-mujer-ideal-para-citas/up/MLMU3126144648) |
+| 015 | Pink Sexy Scandal 50ml | [Matching pack, ref. B922](https://www.farmaciaamorpy.com/item/perfume-onlyou-50ml-sexy-sacandal-sexy-sexyref-b922-064231) |
+| 018 | V.V.LOVE Night Lure shower gel, mist and lotion | [Matching product photograph](https://www.alibaba.com/showroom/v.v-love-body-lotion.html) |
+| 022 | Collagen Ultra Protect gold tube and black box | [Asrar](https://asrar-co.com/en/fruit-of-the-wookali-collagen-sunscreen-spf-90-brightening-cream-100-ml/p1342936448) |
+| 028 | XQM BB Blemish Base 6 in 1, olive artwork | [Matching pack](https://www.daraz.pk/products/xqm-bb-cream-6-in-1-blemish-base-baby-face-effect-spf-35-48h-hydration-smooth-finish-60ml-i889602541.html) |
 
-The source photos were isolated with the built-in imagegen tool using alpha transparency. These are AI-processed cutouts, not untouched manufacturer photography. The original files remain available. In particular, small print can differ after AI processing; consult the physical package for authoritative labeling.
+Adobe non-generative subject masks/background removal were used. Night Lure and the BB cream use named-object masks to exclude the tray and cosmetic smear. PNG export combines source RGB pixels with the masks as alpha. Exact RGB equality before/after these mask exports was checked. No labels or artwork were redrawn.
 
-The exact prompt template used for both accepted images was:
+## Original-photo corrections and limits
 
-> Use case: background-extraction. Edit target: the supplied real product photograph. Remove ONLY the surrounding background and floor; output a clean genuinely transparent PNG cutout of SUBJECT. Keep the EXACT original products, packaging, proportions, colors, bottle contents, printed logos, labels, typography and readable text pixel-faithful. Do not invent or redraw product details, add objects, add shadows, alter brands, replace packaging, or crop any part. Isolate all product objects shown with modest clear transparent margin and no scene, no border, no reflections of objects on the ground. This is for a real store catalog, exact product identity matters more than aesthetic changes.
+014, 016, 017, 019, 020, 023 and 027 received non-generative tonal correction and masking. Their printed faces, designs and lettering were preserved. Original 024 was retained because automatic tone looked worse. Other good originals were retained and reframed.
 
-SUBJECT was `the single green-and-yellow Trichup 400ml shampoo bottle` and `the Pink Sexy Scandal Sexy Sexy 50ml box and its gold-capped perfume bottle` respectively.
+002 Air Fresh and 026 red Strawberry bottle are incomplete in the supplied photographs. No full exact match was verified. The incomplete photos are removed from the visible catalog and their photo arrays are empty; the site displays an honest missing-photo label. These two items require full original photographs before replacement can be completed.
 
-A matching Coco Pink set was found, but both background removal attempts left visible colored background. Those generated candidates were rejected; the original image is retained. The remaining source images are retained wherever an exact replacement was not verified. In particular the incomplete Air Fresh can must not be replaced by a guessed scent.
+Several other originals remain blurred or contain glare over lettering, particularly 014, 016, 017, 020, 023 and 027. Tonal correction cannot recover obscured print. No claim is made that these became high-resolution photography. Generated candidates that changed text, faces, packaging artwork or unseen geometry were rejected.
 
-`scripts/enrich-catalog.ts` updates only untouched demo records with their expected original image and variant ID. It first saves a local ignored backup, then changes names, descriptions, categories, and the two reviewed image paths. Product IDs, variant IDs, prices, availability and owner edits are preserved. It is an explicit maintenance command, never part of deployment or application startup.
+The previous identification of 003 as lily-of-the-valley was wrong: the actual label and official source say Apple Shower Gel / Яблочный. Only that known old name/description is corrected by the photo maintenance script.
+
+## Maintenance and validation
+
+- Sources and provenance modes: `assets-source/catalog-v3/manifest.json`.
+- Export: `scripts/optimize-catalog-photos.mjs`; transparent corners and export dimensions are checked for all 26 files.
+- Guarded database update: `scripts/update-catalog-photos.ts`, dry-run by default, explicit `--apply` to update eligible legacy photo paths.
+- Local ignored source responses, rejected candidates, backups and QA: `work/photo-refresh-20261108/` and `work/backups/`.
+- Product/variant IDs, prices, availability and owner edits are preserved. Eligible variants receive one replacement image; old photographs are not appended as extra gallery images.

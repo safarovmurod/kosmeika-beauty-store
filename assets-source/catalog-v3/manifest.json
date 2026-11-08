@@ -1,0 +1,170 @@
+[
+  {
+    "number": 1,
+    "source": "assets-source/catalog-v3/product_001.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 2,
+    "source": "assets-source/catalog-v3/product_002.png",
+    "mode": "original",
+    "needsFullPhoto": true
+  },
+  {
+    "number": 3,
+    "source": "assets-source/catalog-v3/product_003.png",
+    "mode": "matching-photo",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 4,
+    "source": "assets-source/catalog-v3/product_004.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 5,
+    "source": "assets-source/catalog-v3/product_005.png",
+    "mode": "matching-photo",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 6,
+    "source": "assets-source/catalog-v3/product_006.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 7,
+    "source": "assets-source/catalog-v3/product_007.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 8,
+    "source": "assets-source/catalog-v3/product_008.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 9,
+    "source": "assets-source/catalog-v3/product_009.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 10,
+    "source": "assets-source/catalog-v3/product_010.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 11,
+    "source": "assets-source/catalog-v3/product_011.png",
+    "mode": "matching-photo",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 12,
+    "source": "assets-source/catalog-v3/product_012.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 13,
+    "source": "assets-source/catalog-v3/product_013.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 14,
+    "source": "assets-source/catalog-v3/product_014.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 15,
+    "source": "assets-source/catalog-v3/product_015.png",
+    "mode": "matching-photo",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 16,
+    "source": "assets-source/catalog-v3/product_016.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 17,
+    "source": "assets-source/catalog-v3/product_017.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 18,
+    "source": "assets-source/catalog-v3/product_018.png",
+    "mode": "matching-photo",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 19,
+    "source": "assets-source/catalog-v3/product_019.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 20,
+    "source": "assets-source/catalog-v3/product_020.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 21,
+    "source": "assets-source/catalog-v3/product_021.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 22,
+    "source": "assets-source/catalog-v3/product_022.png",
+    "mode": "matching-photo",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 23,
+    "source": "assets-source/catalog-v3/product_023.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 24,
+    "source": "assets-source/catalog-v3/product_024.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 25,
+    "source": "assets-source/catalog-v3/product_025.png",
+    "mode": "original",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 26,
+    "source": "assets-source/catalog-v3/product_026.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": true
+  },
+  {
+    "number": 27,
+    "source": "assets-source/catalog-v3/product_027.png",
+    "mode": "original-tone-and-mask",
+    "needsFullPhoto": false
+  },
+  {
+    "number": 28,
+    "source": "assets-source/catalog-v3/product_028.png",
+    "mode": "matching-photo",
+    "needsFullPhoto": false
+  }
+]
