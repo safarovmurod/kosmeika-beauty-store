@@ -1,42 +1,38 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Product, Variant } from '../shared/schema';
-import { orderLink } from '../client/whatsapp';
 import { productSchema } from '../shared/schema';
 import { availability } from '../shared/availability';
+import { chatLink, orderMessage, productLink } from '../client/whatsapp';
 
 const first: Variant = { id: 'pink', name: 'Розовый', color: '#ffbbcc', sku: 'SKU-1', available: true, price: null, images: ['/images/pink.webp'] };
 const second: Variant = { ...first, id: 'red', name: 'Красный', sku: 'SKU-2', price: 12500, images: ['/images/red.webp', '/images/red-back.webp'] };
 const product: Product = { id: 'product-1', name: 'Товар & уход', description: '', usage: '', ingredients: '', volume: '', categoryId: 'category', price: 10000, salePrice: 9000, available: true, visible: true, isNew: false, recommended: false, position: 0, variants: [first, second], createdAt: '2026-11-08', category: { id: 'category', name: 'Уход' } };
-const origin = 'https://store.example';
 
-test('WhatsApp receives the selected variant, gallery photo and literal customer text', () => {
+test('the file caption contains only product, chosen variant, price and literal customer text', () => {
   const note = 'Доставка? & цвет красный\n2 штуки + подарок 🎁';
-  const url = new URL(orderLink(product, second, note, second.images[1], origin));
-  assert.equal(url.origin + url.pathname, 'https://wa.me/992906480008');
-  const message = url.searchParams.get('text')!;
-  for (const text of ['Хочу заказать', 'Товар & уход', 'SKU-2', 'Красный', '125 сомони', `${origin}/images/red-back.webp`, '?product=product-1&variant=red', note]) assert.ok(message.includes(text), text);
-  assert.ok(!message.includes('/images/pink.webp'));
-  assert.ok(!message.includes('Количество: 1'), 'a fixed quantity must not contradict the customer asking for two');
-  assert.equal([...url.searchParams.keys()].length, 1);
+  const message = orderMessage(product, second, note);
+  assert.equal(message, `Товар & уход\nКрасный\n125 сомони\n\n${note}`);
+  for (const unwanted of ['Здравствуйте', 'уточнить', 'Артикул', 'SKU-2', 'Карточка:', 'Фото:', 'Моё сообщение:', 'http', 'Количество:']) assert.ok(!message.includes(unwanted), unwanted);
 });
 
-test('unknown prices and unavailable products can be enquired about without promising an order', () => {
-  const message = new URL(orderLink({ ...product, price: 0, salePrice: null, available: false }, first, '', undefined, origin)).searchParams.get('text')!;
-  assert.ok(message.includes('уточнить цену и наличие'));
-  assert.ok(message.includes('Цена: уточнить'));
-  assert.ok(!message.includes('0 сомони'));
-  assert.ok(!message.includes('Моё сообщение:'));
+test('unknown price adds no invented price, stock enquiry or default variant label', () => {
+  const variant = { ...first, name: 'Как на фото', price: null, available: null };
+  const unset = { ...product, price: null, salePrice: null, available: null, variants: [variant] };
+  assert.equal(orderMessage(unset, variant), product.name);
+  assert.equal(orderMessage(unset, variant, 'салом'), `${product.name}\n\nсалом`);
 });
 
-test('sale price and missing photo produce a valid message without a broken photo link', () => {
-  const message = new URL(orderLink(product, { ...first, images: [] }, '   ', undefined, origin)).searchParams.get('text')!;
-  assert.ok(message.includes('90 сомони'));
-  assert.ok(!message.includes('Фото:'));
-  assert.ok(!message.includes('undefined'));
+test('opening the chat leaves its composer blank until the customer writes', () => {
+  assert.equal(chatLink(), 'https://wa.me/992906480008');
+  assert.equal(chatLink('   '), 'https://wa.me/992906480008');
+  const note = 'Салом! 2 дона & доставка?';
+  const link = new URL(chatLink(note));
+  assert.equal(link.searchParams.get('text'), note);
+  assert.deepEqual([...link.searchParams.keys()], ['text']);
 });
 
-test('empty price and availability stay empty and never become a stock promise', () => {
+test('empty price and availability remain distinct from zero and out of stock', () => {
   const unset = { ...product, price: null, salePrice: null, available: null, variants: [{ ...first, available: null }] };
   assert.ok(productSchema.safeParse(unset).success);
   assert.equal(availability(unset, unset.variants[0]), null);
@@ -44,15 +40,13 @@ test('empty price and availability stay empty and never become a stock promise',
   assert.equal(availability({ available: false }, first), false);
   assert.equal(availability(product, { ...first, available: false }), false);
   assert.ok(!productSchema.safeParse({ ...unset, salePrice: 100 }).success);
-  const message = new URL(orderLink(unset, unset.variants[0], '', undefined, origin)).searchParams.get('text')!;
-  assert.ok(message.includes('уточнить цену и наличие'));
-  assert.ok(message.includes('Артикул: SKU-1'));
-  assert.ok(!message.includes('0 сомони'));
 });
 
-test('the gallery photo link carries a bounded local index for the selected variant', () => {
-  const message = new URL(orderLink(product, second, '', second.images[1], origin)).searchParams.get('text')!;
-  assert.ok(message.includes('variant=red&photo=1'));
-  const missingSku = new URL(orderLink(product, { ...second, sku: '' }, '', undefined, origin)).searchParams.get('text')!;
-  assert.ok(missingSku.includes('Артикул: red'));
+test('selected photo deep links retain a real image index, without adding arbitrary URLs', () => {
+  const origin = 'https://store.example';
+  const link = new URL(productLink(product, second, origin, second.images[1]));
+  assert.equal(link.searchParams.get('variant'), 'red');
+  assert.equal(link.searchParams.get('photo'), '1');
+  const invalid = new URL(productLink(product, second, origin, 'https://attacker.example/image.png'));
+  assert.equal(invalid.searchParams.has('photo'), false);
 });
