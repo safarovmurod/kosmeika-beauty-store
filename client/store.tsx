@@ -25,6 +25,7 @@ function GalleryControls({ index, total, onMove }: { index: number; total: numbe
 
 function ProductCard({ product, onOpen }: { product: Product; onOpen: OpenProduct }) {
   const [index, setIndex] = useState(0);
+  const touch = useRef({ x: 0, y: 0, swiped: false });
   const reduceMotion = useReducedMotion();
   const gallery = product.variants.flatMap((variant): { variant: Variant; photo: string | undefined }[] => variant.images.length ? variant.images.map((photo) => ({ variant, photo })) : [{ variant, photo: undefined }]);
   const entry = gallery[index] || gallery[0];
@@ -37,8 +38,16 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: OpenProduc
     whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }} viewport={{ once: true, amount: .08 }}
     whileHover={reduceMotion ? undefined : { y: -5, rotateY: 1.2 }} whileTap={reduceMotion ? undefined : { scale: .985 }}
     transition={{ type: 'spring', stiffness: 135, damping: 23 }} style={{ transformPerspective: 900 }}>
-    <div className="card-gallery">
-      <button className="product-image" onClick={() => onOpen(product, selected, photo)} aria-label={`Подробнее: ${product.name}`}>
+    <div className="card-gallery" onTouchStart={(event) => { const point = event.touches[0]; touch.current = { x: point.clientX, y: point.clientY, swiped: false }; }} onTouchEnd={(event) => {
+      const point = event.changedTouches[0];
+      const delta = point.clientX - touch.current.x;
+      if (gallery.length > 1 && Math.abs(delta) > 45 && Math.abs(delta) > Math.abs(point.clientY - touch.current.y)) {
+        touch.current.swiped = true;
+        if (event.cancelable) event.preventDefault();
+        setIndex((current) => (current + (delta < 0 ? 1 : -1) + gallery.length) % gallery.length);
+      }
+    }}>
+      <button className="product-image" onClick={() => { if (touch.current.swiped) { touch.current.swiped = false; return; } onOpen(product, selected, photo); }} aria-label={`Подробнее: ${product.name}`}>
         {photo ? <img key={photo} src={photo} srcSet={photo.endsWith('.webp') ? `${photo.replace(/\.webp$/, '-thumb.webp')} 480w, ${photo} 1000w` : undefined} sizes="(max-width: 600px) 50vw, (max-width: 900px) 33vw, 25vw" width="1000" height="1200" alt={`${product.name}, ${selected.name}`} loading="lazy"/> : <span className="missing-image">Фото уточняется</span>}
         <span className="badges">{product.isNew && <span>Новинка</span>}{product.recommended && <span>Выбор</span>}{product.salePrice !== null && <span>Акция</span>}</span><span className="image-arrow"><ArrowUpRight size={18}/></span>
       </button>
